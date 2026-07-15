@@ -1,0 +1,949 @@
+/* =============================================================================
+   NICOLE BATTICK — site stylesheet
+   Brand system: Nova Entertainment (navy + gold), fonts Balivia / Josefin / Avenir
+   -----------------------------------------------------------------------------
+   HOW TO EDIT
+   - All colours, fonts and spacing live in the :root variables below.
+     Change a value once here and it updates everywhere.
+   - Fonts are self-hosted (woff2) in /assets/fonts — no external requests.
+   - Sections use helper classes: .section, .section--navy, .section--pale.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1. BRAND FONTS  (self-hosted woff2 — render offline & cross-browser)
+   ----------------------------------------------------------------------------- */
+
+/* Display serif — headings, hero name, "Nova Entertainment" */
+@font-face {
+  font-family: "Balivia";
+  src: url("../assets/fonts/BaliviaFreeBold.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geometric sans — kickers, labels, package names, nav, buttons, tags */
+@font-face {
+  font-family: "Josefin Sans";
+  src: url("../assets/fonts/JosefinSans-Variable.woff2") format("woff2");
+  font-weight: 100 700;         /* variable weight axis */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Body — Avenir (Book / Medium / Heavy) */
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/fonts/Avenir-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/fonts/Avenir-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Avenir";
+  src: url("../assets/fonts/Avenir-Heavy.woff2") format("woff2");
+  font-weight: 700;             /* "Heavy" used for bold / emphasis */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* -----------------------------------------------------------------------------
+   2. DESIGN TOKENS  (edit these to re-skin the whole site)
+   ----------------------------------------------------------------------------- */
+:root {
+  /* ---- Brand colours (from the official Nova Entertainment palette) ---- */
+  --gold:        #F0AD1E;   /* primary accent            */
+  --gold-deep:   #D3960F;   /* hover / darker accent     */
+  --navy:        #101B2D;   /* primary dark / near-black */
+  --navy-2:      #16233A;   /* lifted navy (cards on dark) */
+  --navy-3:      #1E2E49;   /* hairlines / borders on dark */
+  --pale:        #F3F3F2;   /* pale off-white sections   */
+  --white:       #FFFFFF;
+  --ink:         #2B3140;   /* body text on light        */
+  --muted:       #5C6172;   /* captions / secondary text */
+  --hairline:    #E4E2DD;   /* dividers on light         */
+
+  /* ---- Semantic roles (used throughout; point them anywhere) ---- */
+  --bg:            var(--navy);
+  --text:          var(--pale);
+  --text-dim:      rgba(243,243,242,0.72);
+  --accent:        var(--gold);
+  --accent-hover:  var(--gold-deep);
+  --on-accent:     var(--navy);     /* text sitting on a gold button */
+
+  /* ---- Fonts ---- */
+  --font-display: "Balivia", "Georgia", "Times New Roman", serif;
+  --font-sub:     "Josefin Sans", "Century Gothic", "Futura", sans-serif;
+  --font-body:    "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                  Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* ---- Type scale (fluid, clamps between mobile & desktop) ---- */
+  --step--1: clamp(0.83rem, 0.79rem + 0.18vw, 0.92rem);
+  --step-0:  clamp(1rem,    0.95rem + 0.25vw, 1.13rem);
+  --step-1:  clamp(1.2rem,  1.1rem + 0.5vw,   1.5rem);
+  --step-2:  clamp(1.6rem,  1.35rem + 1.2vw,  2.2rem);
+  --step-3:  clamp(2.1rem,  1.6rem + 2.4vw,   3.2rem);
+  --step-4:  clamp(2.7rem,  1.9rem + 3.8vw,   4.6rem);
+  --step-5:  clamp(3.2rem,  2.1rem + 5.4vw,   6rem);
+
+  /* ---- Spacing & layout ---- */
+  --container: 1180px;
+  --container-narrow: 780px;
+  --gutter: clamp(1.15rem, 4vw, 2.5rem);
+  --section-y: clamp(3.5rem, 7vw, 7rem);
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* ---- Effects ---- */
+  --shadow:    0 12px 34px rgba(6, 12, 24, 0.16);
+  --shadow-lg: 0 26px 70px rgba(6, 12, 24, 0.28);
+  --ring: 0 0 0 3px rgba(240, 173, 30, 0.55);   /* focus ring (gold) */
+  --transition: 220ms cubic-bezier(.2,.7,.3,1);
+}
+
+/* -----------------------------------------------------------------------------
+   3. RESET / BASE
+   ----------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 90px;   /* offset sticky header for anchor jumps */
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, svg, video { max-width: 100%; display: block; height: auto; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-2); }
+h4 { font-size: var(--step-1); }
+
+p { margin: 0 0 1rem; }
+p:last-child { margin-bottom: 0; }
+
+strong, b { font-weight: 700; }
+
+ul, ol { margin: 0 0 1rem; padding-left: 1.2rem; }
+li { margin-bottom: 0.4rem; }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--navy-3);
+  margin: 2.5rem 0;
+}
+
+::selection { background: var(--gold); color: var(--navy); }
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: 6px;
+}
+
+/* Accessibility: skip link */
+.skip-link {
+  position: absolute;
+  left: 12px; top: -60px;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-family: var(--font-sub);
+  font-weight: 600;
+  z-index: 1000;
+  transition: top var(--transition);
+}
+.skip-link:focus { top: 12px; }
+
+/* Screen-reader-only helper */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   4. LAYOUT HELPERS
+   ----------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--narrow { max-width: var(--container-narrow); }
+
+.section { padding-block: var(--section-y); position: relative; }
+.section--pale { background: var(--pale); color: var(--ink); }
+.section--navy { background: var(--navy); color: var(--text); }
+.section--tight { padding-block: clamp(2.5rem, 5vw, 4rem); }
+
+/* On pale sections, headings/links use ink + gold */
+.section--pale h1, .section--pale h2, .section--pale h3, .section--pale h4 { color: var(--navy); }
+.section--pale .lead { color: var(--muted); }
+
+.grid { display: grid; gap: clamp(1rem, 2.5vw, 1.8rem); }
+@media (min-width: 620px)  { .grid--2 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 720px)  { .grid--3 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 900px)  { .grid--4 { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 900px)  { .grid--3-wide { grid-template-columns: repeat(3, 1fr); } }
+
+.text-center { text-align: center; }
+.mx-auto { margin-inline: auto; }
+.stack > * + * { margin-top: 1rem; }
+
+/* -----------------------------------------------------------------------------
+   5. SHARED TEXT ELEMENTS  (eyebrow / kicker, lead, section header)
+   ----------------------------------------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0 0 1rem;
+  display: inline-block;
+}
+
+.lead {
+  font-size: var(--step-1);
+  line-height: 1.55;
+  color: var(--text-dim);
+  font-weight: 400;
+  max-width: 60ch;
+}
+
+.section-header { max-width: 62ch; margin-bottom: clamp(2rem, 4vw, 3.25rem); }
+.section-header.text-center { margin-inline: auto; }
+
+/* -----------------------------------------------------------------------------
+   6. BUTTONS
+   ----------------------------------------------------------------------------- */
+.btn {
+  --btn-bg: var(--gold);
+  --btn-fg: var(--navy);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-sub);
+  font-weight: 600;
+  font-size: var(--step-0);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 2px solid var(--btn-bg);
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition),
+              border-color var(--transition), color var(--transition);
+  will-change: transform;
+}
+.btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: currentColor;
+  border-color: currentColor;
+}
+.btn--ghost:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+/* Ghost button tuned for pale backgrounds */
+.section--pale .btn--ghost { color: var(--navy); }
+
+.btn--lg { padding: 1.05rem 2rem; font-size: var(--step-1); }
+.btn--block { width: 100%; justify-content: center; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+.btn-row--center { justify-content: center; }
+
+/* Simple text link with arrow */
+.arrow-link {
+  font-family: var(--font-sub);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: var(--step--1);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.arrow-link .arrow { transition: transform var(--transition); }
+.arrow-link:hover .arrow { transform: translateX(4px); }
+
+/* -----------------------------------------------------------------------------
+   7. HEADER / NAV
+   ----------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(16, 27, 45, 0.82);
+  backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid rgba(240, 173, 30, 0.16);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 68px;
+}
+
+/* Brand wordmark (site = Nicole Battick) */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--pale);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.brand:hover { color: var(--gold); }
+.brand .brand-mark { width: 26px; height: 26px; flex: none; }
+
+/* Nav links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 1.4vw, 1.4rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  font-family: var(--font-sub);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  padding: 0.4rem 0;
+  position: relative;
+  transition: color var(--transition);
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width var(--transition);
+}
+.nav-links a:hover { color: var(--pale); }
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after { width: 100%; }
+.nav-links a[aria-current="page"] { color: var(--gold); }
+
+.nav-cta { margin-left: 0.4rem; }
+.nav-cta .btn { padding: 0.6rem 1.15rem; font-size: 0.85rem; }
+
+/* Mobile menu toggle (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  background: transparent;
+  border: 1px solid rgba(243,243,242,0.28);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  height: 2px; width: 20px;
+  margin-inline: auto;
+  background: var(--pale);
+  transition: transform var(--transition), opacity var(--transition);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* --- Mobile nav --- */
+@media (max-width: 940px) {
+  .nav-toggle { display: flex; }
+  .nav-menu {
+    position: fixed;
+    inset: 68px 0 auto 0;
+    background: var(--navy);
+    border-bottom: 1px solid var(--navy-3);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem var(--gutter) 1.5rem;
+    max-height: calc(100vh - 68px);
+    overflow-y: auto;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition), transform var(--transition);
+  }
+  .nav-menu.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .nav-links { flex-direction: column; align-items: stretch; gap: 0; }
+  .nav-links li { border-bottom: 1px solid var(--navy-3); }
+  .nav-links a { display: block; padding: 0.95rem 0.2rem; font-size: 1.05rem; }
+  .nav-links a::after { display: none; }
+  .nav-cta { margin: 1.1rem 0 0; }
+  .nav-cta .btn { width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.95rem; }
+}
+
+/* -----------------------------------------------------------------------------
+   8. HERO
+   ----------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3.5rem, 8vw, 7rem);
+  background:
+    radial-gradient(60% 55% at 78% 12%, rgba(240,173,30,0.20), transparent 60%),
+    radial-gradient(50% 50% at 8% 90%, rgba(240,173,30,0.10), transparent 55%),
+    var(--navy);
+}
+.hero::before {   /* subtle top hairline glow */
+  content: "";
+  position: absolute; inset: 0 0 auto 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(240,173,30,0.5), transparent);
+}
+.hero-grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+@media (min-width: 920px) {
+  .hero-grid { grid-template-columns: 1.05fr 0.95fr; }
+}
+.hero h1 {
+  font-size: var(--step-5);
+  margin-bottom: 0.35em;
+}
+.hero .hero-tagline {
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  color: var(--gold);
+  font-size: var(--step-0);
+  margin-bottom: 1.4rem;
+}
+.hero .lead { margin-bottom: 2rem; }
+.hero .btn-row { margin-top: 0.5rem; }
+
+/* -----------------------------------------------------------------------------
+   9. MEDIA PLACEHOLDERS  (swap for real photo / video / audio later)
+   ----------------------------------------------------------------------------- */
+.media-placeholder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: center;
+  padding: 1.5rem;
+  border: 1.5px dashed rgba(240,173,30,0.45);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, rgba(240,173,30,0.06), rgba(240,173,30,0.02)),
+    var(--navy-2);
+  color: var(--text-dim);
+  overflow: hidden;
+}
+.media-placeholder .ph-icon {
+  width: 46px; height: 46px;
+  color: var(--gold);
+  opacity: 0.9;
+}
+.media-placeholder .ph-label {
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--gold);
+}
+.media-placeholder .ph-note {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  max-width: 34ch;
+}
+.media-placeholder--16x9 { aspect-ratio: 16 / 9; }
+.media-placeholder--4x3  { aspect-ratio: 4 / 3; }
+.media-placeholder--1x1  { aspect-ratio: 1 / 1; }
+.media-placeholder--portrait { aspect-ratio: 4 / 5; }
+
+/* Placeholder variant that sits on pale sections */
+.section--pale .media-placeholder {
+  background: linear-gradient(135deg, rgba(16,27,45,0.05), rgba(240,173,30,0.05)), var(--white);
+  border-color: rgba(211,150,15,0.5);
+  color: var(--muted);
+}
+.section--pale .media-placeholder .ph-note { color: var(--muted); }
+
+/* Audio sample placeholder (row style) */
+.audio-slot {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--navy-3);
+  border-radius: var(--radius);
+  background: var(--navy-2);
+}
+.section--pale .audio-slot { background: var(--white); border-color: var(--hairline); }
+.audio-slot .play {
+  width: 44px; height: 44px; flex: none;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--gold); color: var(--navy);
+}
+.audio-slot .audio-meta strong {
+  display: block;
+  font-family: var(--font-sub);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+.audio-slot .audio-meta span { font-size: 0.85rem; color: var(--muted); }
+.section--navy .audio-slot .audio-meta span { color: var(--text-dim); }
+.audio-slot .waveform {
+  flex: 1;
+  height: 26px;
+  border-radius: 6px;
+  background: repeating-linear-gradient(90deg,
+      rgba(240,173,30,0.55) 0 2px, transparent 2px 6px);
+  opacity: 0.55;
+  min-width: 60px;
+}
+
+/* -----------------------------------------------------------------------------
+   10. CARDS
+   ----------------------------------------------------------------------------- */
+.card {
+  background: var(--navy-2);
+  border: 1px solid var(--navy-3);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.4rem, 2.5vw, 2rem);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  height: 100%;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(240,173,30,0.5); box-shadow: var(--shadow-lg); }
+.section--pale .card { background: var(--white); border-color: var(--hairline); box-shadow: var(--shadow); }
+.section--pale .card:hover { border-color: var(--gold); }
+
+.card h3 { margin-bottom: 0.5rem; }
+.card p { color: var(--text-dim); }
+.section--pale .card p { color: var(--muted); }
+
+/* Link card (Home → sections) */
+.link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.link-card .card-index {
+  font-family: var(--font-sub);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-size: var(--step--1);
+  color: var(--gold);
+}
+.link-card h3 { font-size: var(--step-1); }
+.link-card .arrow-link { margin-top: auto; }
+
+/* -----------------------------------------------------------------------------
+   11. NOVA PACKAGE CARDS  (Live Bands)
+   ----------------------------------------------------------------------------- */
+.package-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--navy-2);
+  border: 1px solid var(--navy-3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  height: 100%;
+}
+.package-card:hover { transform: translateY(-5px); border-color: rgba(240,173,30,0.55); box-shadow: var(--shadow-lg); }
+
+/* top ribbon of gold */
+.package-card .pkg-top {
+  height: 6px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-deep));
+}
+.package-card .pkg-body { padding: clamp(1.5rem, 3vw, 2.1rem); display: flex; flex-direction: column; gap: 0.9rem; flex: 1; }
+.package-card .pkg-name {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  color: var(--pale);
+  line-height: 1.05;
+}
+.package-card .pkg-kicker {
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.package-card p { color: var(--text-dim); }
+
+.pkg-meta { margin-top: auto; display: grid; gap: 0.6rem; padding-top: 0.4rem; }
+.pkg-meta .meta-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  font-size: 0.92rem;
+  border-top: 1px solid var(--navy-3);
+  padding-top: 0.6rem;
+}
+.pkg-meta .meta-label {
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--gold);
+  flex: none;
+  width: 5.5rem;
+}
+.pkg-meta .meta-val { color: var(--text-dim); }
+
+/* Premium package highlight (Nova: The Spectacle) */
+.package-card--feature {
+  border-color: rgba(240,173,30,0.6);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(240,173,30,0.14), transparent 60%),
+    var(--navy-2);
+}
+.package-card--feature .pkg-top { height: 8px; }
+.badge {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--gold);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-pill);
+}
+
+/* -----------------------------------------------------------------------------
+   12. FEATURE / CHECK LISTS
+   ----------------------------------------------------------------------------- */
+.tick-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; }
+.tick-list li {
+  position: relative;
+  padding-left: 1.9rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+.section--pale .tick-list li { color: var(--ink); }
+.tick-list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.15em;
+  width: 1.2rem; height: 1.2rem;
+  border-radius: 50%;
+  background: rgba(240,173,30,0.18);
+  border: 1px solid var(--gold);
+}
+.tick-list li::after {
+  content: "";
+  position: absolute;
+  left: 0.42rem; top: 0.38em;
+  width: 0.32rem; height: 0.6rem;
+  border: solid var(--gold);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Tag chips (genres, vibes) */
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0; list-style: none; }
+.tags li {
+  margin: 0;
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gold);
+  border: 1px solid rgba(240,173,30,0.4);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.7rem;
+}
+
+/* -----------------------------------------------------------------------------
+   13. SPLIT / FEATURE SECTIONS  (text + media side by side)
+   ----------------------------------------------------------------------------- */
+.split {
+  display: grid;
+  gap: clamp(1.8rem, 4vw, 3.5rem);
+  align-items: center;
+}
+@media (min-width: 860px) {
+  .split { grid-template-columns: 1fr 1fr; }
+  .split--media-first .split-media { order: -1; }
+}
+
+/* Stat row */
+.stats { display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 620px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stat { text-align: center; }
+.stat .stat-num {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  color: var(--gold);
+  line-height: 1;
+}
+.stat .stat-label {
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-top: 0.4rem;
+}
+.section--pale .stat .stat-label { color: var(--muted); }
+
+/* -----------------------------------------------------------------------------
+   14. CALL-TO-ACTION BAND
+   ----------------------------------------------------------------------------- */
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(60% 120% at 50% 0%, rgba(240,173,30,0.18), transparent 60%),
+    var(--navy);
+  border-top: 1px solid rgba(240,173,30,0.18);
+  border-bottom: 1px solid rgba(240,173,30,0.18);
+}
+.cta-band h2 { color: var(--pale); }
+.cta-band .lead { margin-inline: auto; margin-bottom: 2rem; }
+
+/* -----------------------------------------------------------------------------
+   15. CONTACT FORM
+   ----------------------------------------------------------------------------- */
+.form-card {
+  background: var(--navy-2);
+  border: 1px solid var(--navy-3);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+}
+.form-grid { display: grid; gap: 1.15rem; }
+@media (min-width: 620px) { .form-grid .span-2 { grid-column: 1 / -1; } .form-grid.cols-2 { grid-template-columns: 1fr 1fr; } }
+
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+.field label {
+  font-family: var(--font-sub);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.field label .req { color: var(--gold); }
+
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  color: var(--pale);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--navy-3);
+  border-radius: 10px;
+  padding: 0.8rem 0.95rem;
+  width: 100%;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.field textarea { resize: vertical; min-height: 140px; }
+.field select { appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23F0AD1E' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: rgba(243,243,242,0.4); }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: var(--ring);
+}
+.field option { color: #111; }   /* native dropdown list readable */
+
+.form-note { font-size: 0.85rem; color: var(--text-dim); }
+
+/* Contact detail list */
+.contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.2rem; }
+.contact-list li { display: flex; gap: 0.9rem; align-items: flex-start; margin: 0; }
+.contact-list .ci {
+  width: 40px; height: 40px; flex: none;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(240,173,30,0.14);
+  color: var(--gold);
+  border: 1px solid rgba(240,173,30,0.4);
+}
+.contact-list .ci svg { width: 18px; height: 18px; }
+.contact-list strong { font-family: var(--font-sub); letter-spacing: 0.04em; }
+.contact-list a:hover { color: var(--gold); }
+
+/* -----------------------------------------------------------------------------
+   16. SOCIAL LINKS
+   ----------------------------------------------------------------------------- */
+.socials { display: flex; gap: 0.65rem; flex-wrap: wrap; }
+.socials a {
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--navy-3);
+  color: var(--text-dim);
+  transition: color var(--transition), border-color var(--transition), transform var(--transition), background var(--transition);
+}
+.socials a:hover { color: var(--navy); background: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
+.socials a svg { width: 19px; height: 19px; }
+.section--pale .socials a { border-color: var(--hairline); color: var(--muted); }
+
+/* -----------------------------------------------------------------------------
+   17. FOOTER
+   ----------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--navy);
+  border-top: 1px solid var(--navy-3);
+  padding-block: clamp(2.75rem, 5vw, 4rem) 1.75rem;
+}
+.footer-grid {
+  display: grid;
+  gap: 2.25rem;
+}
+@media (min-width: 720px) {
+  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+}
+.footer-brand .brand { font-size: 1.7rem; margin-bottom: 0.9rem; }
+.footer-brand p { color: var(--text-dim); max-width: 34ch; }
+.footer-col h4 {
+  font-family: var(--font-sub);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.footer-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
+.footer-col li { margin: 0; }
+.footer-col a { color: var(--text-dim); transition: color var(--transition); }
+.footer-col a:hover { color: var(--pale); }
+
+.footer-bottom {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--navy-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+.footer-bottom .footer-crest { width: 40px; height: 40px; opacity: 0.85; }
+
+/* -----------------------------------------------------------------------------
+   18. PAGE HERO (interior pages — smaller than home hero)
+   ----------------------------------------------------------------------------- */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2.5rem, 5vw, 4rem);
+  background:
+    radial-gradient(55% 60% at 82% 20%, rgba(240,173,30,0.16), transparent 60%),
+    var(--navy);
+  border-bottom: 1px solid rgba(240,173,30,0.14);
+}
+.page-hero .lead { margin-top: 1rem; }
+.page-hero h1 { font-size: var(--step-4); }
+
+/* Breadcrumb-ish label */
+.page-hero .eyebrow { margin-bottom: 1.1rem; }
+
+/* -----------------------------------------------------------------------------
+   19. SCROLL REVEAL (progressive enhancement — JS adds .is-visible)
+   ----------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(.2,.7,.3,1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+/* If JS is off, ensure content is visible */
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* -----------------------------------------------------------------------------
+   20. REDUCED MOTION
+   ----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
