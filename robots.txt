@@ -1,0 +1,6 @@
+# Allow all search engines to index the whole site
+User-agent: *
+Allow: /
+
+# Update the domain below once your site is live
+Sitemap: https://REPLACE-WITH-DOMAIN/sitemap.xml
