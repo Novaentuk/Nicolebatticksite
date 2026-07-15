@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Update the domain below once your site is live
-Sitemap: https://REPLACE-WITH-DOMAIN/sitemap.xml
+Sitemap: https://novaentuk.github.io/Nicolebatticksite/sitemap.xml

@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Replace REPLACE-WITH-DOMAIN with your live domain, then resubmit in
+<!-- Replace novaentuk.github.io/Nicolebatticksite with your live domain, then resubmit in
      Google Search Console. Update <lastmod> dates when you change a page. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://REPLACE-WITH-DOMAIN/index.html</loc>
+    <loc>https://novaentuk.github.io/Nicolebatticksite/index.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://REPLACE-WITH-DOMAIN/live-bands.html</loc>
+    <loc>https://novaentuk.github.io/Nicolebatticksite/live-bands.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://REPLACE-WITH-DOMAIN/solo.html</loc>
+    <loc>https://novaentuk.github.io/Nicolebatticksite/solo.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://REPLACE-WITH-DOMAIN/session.html</loc>
+    <loc>https://novaentuk.github.io/Nicolebatticksite/session.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://REPLACE-WITH-DOMAIN/songwriting.html</loc>
+    <loc>https://novaentuk.github.io/Nicolebatticksite/songwriting.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://REPLACE-WITH-DOMAIN/lessons.html</loc>
+    <loc>https://novaentuk.github.io/Nicolebatticksite/lessons.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://REPLACE-WITH-DOMAIN/about.html</loc>
+    <loc>https://novaentuk.github.io/Nicolebatticksite/about.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://REPLACE-WITH-DOMAIN/contact.html</loc>
+    <loc>https://novaentuk.github.io/Nicolebatticksite/contact.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.9</priority>
   </url>
