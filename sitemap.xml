@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Replace novaentuk.github.io/Nicolebatticksite with your live domain, then resubmit in
+<!-- Replace novaentuk.com with your live domain, then resubmit in
      Google Search Console. Update <lastmod> dates when you change a page. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://novaentuk.github.io/Nicolebatticksite/index.html</loc>
+    <loc>https://novaentuk.com/index.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://novaentuk.github.io/Nicolebatticksite/live-bands.html</loc>
+    <loc>https://novaentuk.com/live-bands.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://novaentuk.github.io/Nicolebatticksite/solo.html</loc>
+    <loc>https://novaentuk.com/solo.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://novaentuk.github.io/Nicolebatticksite/session.html</loc>
+    <loc>https://novaentuk.com/session.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://novaentuk.github.io/Nicolebatticksite/songwriting.html</loc>
+    <loc>https://novaentuk.com/songwriting.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://novaentuk.github.io/Nicolebatticksite/lessons.html</loc>
+    <loc>https://novaentuk.com/lessons.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://novaentuk.github.io/Nicolebatticksite/about.html</loc>
+    <loc>https://novaentuk.com/about.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://novaentuk.github.io/Nicolebatticksite/contact.html</loc>
+    <loc>https://novaentuk.com/contact.html</loc>
     <lastmod>2026-07-15</lastmod>
     <priority>0.9</priority>
   </url>
