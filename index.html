@@ -89,16 +89,12 @@
           </div>
 
           <div class="hero-media">
-            <!-- PLACEHOLDER: hero highlight reel (embed your showreel video or a hero photo).
-                 Swap this whole block for a <video>, a YouTube/Vimeo <iframe>, or an <img>. -->
-            <div class="media-placeholder media-placeholder--16x9" role="img"
-                 aria-label="Placeholder for showreel video or hero photo">
-              <svg class="ph-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M10 8.5v7l6-3.5-6-3.5Z" fill="currentColor"/>
-              </svg>
-              <span class="ph-label">Highlight reel</span>
-              <span class="ph-note">Drop your showreel video or a standout live photo here.</span>
+            <!-- Showreel video. Poster shows a still until played; swap the .mp4 to change the clip. -->
+            <div class="media-frame media-frame--16x9">
+              <video controls playsinline preload="metadata" poster="assets/img/home-hero.jpg">
+                <source src="assets/img/live-clip.mp4" type="video/mp4">
+                Your browser can't play this video.
+              </video>
             </div>
           </div>
         </div>
@@ -200,12 +196,8 @@
       <div class="container">
         <div class="split split--media-first">
           <div class="split-media reveal">
-            <!-- PLACEHOLDER: Nova Entertainment band photo (full band on stage) -->
-            <div class="media-placeholder media-placeholder--4x3" role="img"
-                 aria-label="Placeholder for Nova Entertainment band photo">
-              <img src="assets/logos/nova-primary-color.svg" alt="Nova Entertainment logo"
-                   style="max-width: 62%; margin-bottom: 0.9rem;">
-              <span class="ph-note">Swap for a full-band live photo.</span>
+            <div class="media-frame media-frame--4x3">
+              <img src="assets/img/home-band.jpg" alt="Nicole Battick singing with her live band on stage">
             </div>
           </div>
 

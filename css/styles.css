@@ -936,7 +936,28 @@ hr {
 .no-js .reveal { opacity: 1; transform: none; }
 
 /* -----------------------------------------------------------------------------
-   20. REDUCED MOTION
+   20. MEDIA FRAMES  (real photos / video that replace the placeholders)
+   ----------------------------------------------------------------------------- */
+.media-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--navy-2);
+  box-shadow: var(--shadow-lg);
+}
+.media-frame img,
+.media-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.media-frame--16x9 { aspect-ratio: 16 / 9; }
+.media-frame--4x3  { aspect-ratio: 4 / 3; }
+.media-frame--portrait { aspect-ratio: 4 / 5; }
+
+/* -----------------------------------------------------------------------------
+   21. REDUCED MOTION
    ----------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
