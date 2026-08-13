@@ -956,6 +956,20 @@ hr {
 .media-frame--4x3  { aspect-ratio: 4 / 3; }
 .media-frame--portrait { aspect-ratio: 4 / 5; }
 
+/* Brand logo tile — displays a logo contained (not cropped) on a navy panel */
+.logo-panel {
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.8rem, 5vw, 3rem);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  background:
+    radial-gradient(60% 60% at 50% 42%, rgba(240, 173, 30, 0.16), transparent 62%),
+    var(--navy);
+}
+.logo-panel img { width: 100%; max-width: 320px; height: auto; display: block; }
+
 /* -----------------------------------------------------------------------------
    21. REDUCED MOTION
    ----------------------------------------------------------------------------- */
