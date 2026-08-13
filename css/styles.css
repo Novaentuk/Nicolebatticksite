@@ -384,6 +384,16 @@ hr {
 .nav-cta { margin-left: 0.4rem; }
 .nav-cta .btn { padding: 0.6rem 1.15rem; font-size: 0.85rem; }
 
+/* Desktop: keep the nav links and the Enquire button together on one row,
+   pushed to the right alongside the headings. */
+@media (min-width: 941px) {
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.8rem, 1.6vw, 1.5rem);
+  }
+}
+
 /* Mobile menu toggle (hidden on desktop) */
 .nav-toggle {
   display: none;
