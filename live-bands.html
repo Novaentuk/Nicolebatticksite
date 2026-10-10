@@ -24,7 +24,7 @@
   <link rel="apple-touch-icon" href="assets/logos/nova-mark-300.png">
   <link rel="preload" href="assets/fonts/Avenir-Book.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/BaliviaFreeBold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=3">
   <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -47,7 +47,6 @@
             <li><a href="live-bands.html">Live Bands</a></li>
             <li><a href="solo.html">Solo</a></li>
             <li><a href="session.html">Session &amp; Studio</a></li>
-            <li><a href="songwriting.html">Songwriting</a></li>
             <li><a href="lessons.html">Lessons</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -63,10 +62,11 @@
     <!-- ===================== PAGE HERO ===================== -->
     <section class="page-hero">
       <div class="container">
+        <div class="hero-brand">
+          <img src="assets/logos/nova-secondary-gold.png" alt="Nova Entertainment">
+        </div>
         <div class="hero-grid">
           <div>
-            <img src="assets/logos/nova-primary-gold.png" alt="Nova Entertainment"
-                 style="height: clamp(130px, 16vw, 180px); width: auto; display: block; margin-bottom: 1.2rem;">
             <h1>Live bands that own the room</h1>
             <p class="lead">
               Nova Entertainment is my live-band brand for weddings and events. Pick your sound
@@ -80,7 +80,7 @@
           </div>
           <div class="hero-media">
             <div class="media-frame media-frame--portrait">
-              <img src="assets/img/band-fun.jpg" alt="Nicole Battick and her band at a venue">
+              <img src="assets/img/band-lineup.jpg" alt="Nicole Battick with her band at a venue">
             </div>
           </div>
         </div>
@@ -115,7 +115,15 @@
               </div>
               <div class="pkg-audio">
                 <span class="pkg-audio-label">Hear it live · Never Too Much</span>
-                <audio controls preload="metadata" src="assets/audio/nova-soul.mp3"></audio>
+                <div class="aplayer">
+                  <button class="aplayer-btn" type="button" aria-label="Play Never Too Much">
+                    <svg class="ic ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7-11-7Z" fill="currentColor"/></svg>
+                    <svg class="ic ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+                  </button>
+                  <div class="aplayer-bar"><span class="aplayer-fill"></span></div>
+                  <span class="aplayer-time">–:––</span>
+                  <audio preload="metadata" src="assets/audio/nova-soul.mp3"></audio>
+                </div>
               </div>
             </div>
           </article>
@@ -135,7 +143,15 @@
               </div>
               <div class="pkg-audio">
                 <span class="pkg-audio-label">Hear it live · Gimme Gimme Gimme</span>
-                <audio controls preload="metadata" src="assets/audio/nova-disco.mp3"></audio>
+                <div class="aplayer">
+                  <button class="aplayer-btn" type="button" aria-label="Play Gimme Gimme Gimme">
+                    <svg class="ic ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7-11-7Z" fill="currentColor"/></svg>
+                    <svg class="ic ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+                  </button>
+                  <div class="aplayer-bar"><span class="aplayer-fill"></span></div>
+                  <span class="aplayer-time">–:––</span>
+                  <audio preload="metadata" src="assets/audio/nova-disco.mp3"></audio>
+                </div>
               </div>
             </div>
           </article>
@@ -155,7 +171,15 @@
               </div>
               <div class="pkg-audio">
                 <span class="pkg-audio-label">Hear it live · Messy</span>
-                <audio controls preload="metadata" src="assets/audio/nova-party.mp3"></audio>
+                <div class="aplayer">
+                  <button class="aplayer-btn" type="button" aria-label="Play Messy">
+                    <svg class="ic ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7-11-7Z" fill="currentColor"/></svg>
+                    <svg class="ic ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+                  </button>
+                  <div class="aplayer-bar"><span class="aplayer-fill"></span></div>
+                  <span class="aplayer-time">–:––</span>
+                  <audio preload="metadata" src="assets/audio/nova-party.mp3"></audio>
+                </div>
               </div>
             </div>
           </article>
@@ -176,7 +200,15 @@
               </div>
               <div class="pkg-audio">
                 <span class="pkg-audio-label">Hear it live · Where Love Lives</span>
-                <audio controls preload="metadata" src="assets/audio/nova-spectacle.mp3"></audio>
+                <div class="aplayer">
+                  <button class="aplayer-btn" type="button" aria-label="Play Where Love Lives">
+                    <svg class="ic ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7-11-7Z" fill="currentColor"/></svg>
+                    <svg class="ic ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
+                  </button>
+                  <div class="aplayer-bar"><span class="aplayer-fill"></span></div>
+                  <span class="aplayer-time">–:––</span>
+                  <audio preload="metadata" src="assets/audio/nova-spectacle.mp3"></audio>
+                </div>
               </div>
             </div>
           </article>
@@ -226,7 +258,7 @@
         </div>
         <div class="grid grid--3 reveal">
           <div class="media-frame media-frame--portrait">
-            <img src="assets/img/band-lineup.jpg" alt="Nicole Battick with her band at a venue">
+            <img src="assets/img/band-fun.jpg" alt="Nicole Battick and the band between sets">
           </div>
           <div class="media-frame media-frame--portrait">
             <img src="assets/img/home-band.jpg" alt="Nicole Battick performing with her band on stage">
@@ -273,7 +305,6 @@
             <li><a href="live-bands.html">Live Bands</a></li>
             <li><a href="solo.html">Solo</a></li>
             <li><a href="session.html">Session &amp; Studio</a></li>
-            <li><a href="songwriting.html">Songwriting</a></li>
             <li><a href="lessons.html">Lessons</a></li>
             <li><a href="about.html">About</a></li>
           </ul>
@@ -294,6 +325,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=3" defer></script>
 </body>
 </html>

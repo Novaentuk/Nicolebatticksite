@@ -968,23 +968,70 @@ hr {
 
 /* Audio sample player inside a package card */
 .pkg-audio {
-  margin-top: 1rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid var(--navy-3);
+  margin-top: 1.1rem;
+  padding: 0.8rem 0.85rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--navy-3);
 }
 .pkg-audio-label {
   display: block;
   font-family: var(--font-sub);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 600;
   color: var(--gold);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.55rem;
+  line-height: 1.3;
 }
-.pkg-audio audio {
-  width: 100%;
-  height: 38px;
+/* Custom compact audio player.
+   The browser's built-in player can't shrink below ~300px, which overflows a
+   narrow package card, so these are our own controls driven by a hidden <audio>. */
+.aplayer { display: flex; align-items: center; gap: 0.55rem; }
+.aplayer audio { display: none; }
+
+.aplayer-btn {
+  width: 34px; height: 34px; flex: none;
+  border: 0; border-radius: 50%; padding: 0;
+  background: var(--gold); color: var(--navy);
+  display: grid; place-items: center; cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.aplayer-btn:hover { background: var(--gold-deep); transform: scale(1.05); }
+.aplayer-btn .ic { width: 15px; height: 15px; }
+.aplayer .ic-pause { display: none; }
+.aplayer.is-playing .ic-play { display: none; }
+.aplayer.is-playing .ic-pause { display: block; }
+
+.aplayer-bar {
+  flex: 1; min-width: 0; height: 5px;
+  border-radius: var(--radius-pill);
+  background: rgba(243, 240, 230, 0.18);
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.aplayer-fill {
+  position: absolute; inset: 0 auto 0 0; width: 0;
+  background: var(--gold); border-radius: var(--radius-pill);
+}
+.aplayer-time {
+  flex: none;
+  font-family: var(--font-sub);
+  font-size: 0.68rem; letter-spacing: 0.04em;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Big centred brand lockup at the top of a page hero (Live Bands) */
+.hero-brand {
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(1.8rem, 4vw, 3rem);
+}
+.hero-brand img {
+  /* horizontal lockup, so size by width */
+  width: clamp(260px, 42vw, 520px);
+  height: auto;
   display: block;
 }
 
