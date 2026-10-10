@@ -1022,6 +1022,33 @@ hr {
   font-variant-numeric: tabular-nums;
 }
 
+/* Credits grid — artist name over venue/event, flows to 2 then 3 columns */
+.credit-grid {
+  list-style: none;
+  padding: 0;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  display: grid;
+  gap: 0 2.5rem;
+}
+@media (min-width: 620px) { .credit-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .credit-grid { grid-template-columns: repeat(3, 1fr); } }
+.credit-grid li {
+  margin: 0;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--hairline);
+}
+.credit-grid strong {
+  display: block;
+  font-family: var(--font-sub);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--navy);
+}
+.credit-grid span {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
 /* Big centred brand lockup at the top of a page hero (Live Bands) */
 .hero-brand {
   display: flex;
