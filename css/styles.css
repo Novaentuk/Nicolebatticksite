@@ -966,6 +966,28 @@ hr {
 .media-frame--4x3  { aspect-ratio: 4 / 3; }
 .media-frame--portrait { aspect-ratio: 4 / 5; }
 
+/* Audio sample player inside a package card */
+.pkg-audio {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--navy-3);
+}
+.pkg-audio-label {
+  display: block;
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.pkg-audio audio {
+  width: 100%;
+  height: 38px;
+  display: block;
+}
+
 /* Brand logo tile — displays a logo contained (not cropped) on a navy panel */
 .logo-panel {
   aspect-ratio: 4 / 3;
